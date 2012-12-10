@@ -4,12 +4,12 @@
 
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
-Version:	1.2.0
+Version:	1.4.0
 Release:	1
 License:	GPLv2+ and GFDL
 Group:		Graphical desktop/GNOME
 URL:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/1.2/%{name}-%{version}.tar.xz
+Source0:	http://pub.mate-desktop.org/releases/%{lua: print (string.match(rpm.expand("%{version}"),"%d+.%d+"))}/%{name}-%{version}.tar.xz
 
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gtk-doc
@@ -122,8 +122,6 @@ EOF
 %{_datadir}/pixmaps/*
 %{_iconsdir}/mate/*/apps/*
 %{_mandir}/man1/*
-# mate help file
-%{_datadir}/mate/help
 
 %files -n %{libname}
 %{_libdir}/libmatedict.so.%{major}*
@@ -132,4 +130,11 @@ EOF
 %{_libdir}/libmatedict*.so
 %{_libdir}/pkgconfig/mate-dict*.pc
 %{_includedir}/mate-dict*
+
+
+
+%changelog
+* Tue Jun 05 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-1
++ Revision: 802520
+- imported package mate-utils
 
