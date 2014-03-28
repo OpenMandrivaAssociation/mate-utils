@@ -1,29 +1,27 @@
+%define url_ver %(echo %{version}|cut -d. -f1,2)
+
 %define major 6
 %define libname %mklibname matedict %{major}
 %define devname %mklibname -d matedict
 
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
-Version:	1.4.0
+Version:	1.8.0
 Release:	1
-License:	GPLv2+ and GFDL
+License:	GPLv2+
 Group:		Graphical desktop/GNOME
-URL:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/%{lua: print (string.match(rpm.expand("%{version}"),"%d+.%d+"))}/%{name}-%{version}.tar.xz
-
-BuildRequires:	docbook-dtd412-xml
+Url:		http://mate-desktop.org
+Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	mate-common
-BuildRequires:	mate-conf
+BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libcanberra-gtk)
 BuildRequires:	pkgconfig(libgtop-2.0)
-BuildRequires:	pkgconfig(libmatepanelapplet-2.0)
-BuildRequires:	pkgconfig(mateconf-2.0)
-BuildRequires:	pkgconfig(mate-doc-utils)
+BuildRequires:	pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
@@ -37,30 +35,29 @@ your day just that little bit brighter - System Log Viewer,
 Search Tool, Dictionary.
 
 %package -n %{libname}
-Group: System/Libraries
-Summary: MATE dictionary shared library
+Group:		System/Libraries
+Summary:	MATE dictionary shared library
 
 %description -n %{libname}
 This is the shared library required by the MATE Dictionary.
 
 %package -n %{devname}
-Group: Development/C
-Summary: MATE dictionary library development files
-Requires: %{libname} = %{version}
-Provides: libgdict1.0-devel = %{version}
+Group:		Development/C
+Summary:	MATE dictionary library development files
+Requires:	%{libname} = %{version}-%{release}
+Provides:	libgdict1.0-devel = %{version}-%{release}
 
 %description -n %{devname}
 This is the shared library required by the MATE Dictionary.
 
 %prep
 %setup -q
+NOCONFIGURE=yes ./autogen.sh
 
 %build
-NOCONFIGURE=yes ./autogen.sh
 %configure2_5x \
 	--disable-static \
-	--disable-scrollkeeper \
-	--disable-schemas-install
+	--enable-gdict-applet
 
 %make
 
@@ -70,7 +67,7 @@ rm -rf %{buildroot}/var
 rm -fv %{buildroot}%{_bindir}/test-reader
 
 # make mate-system-log use consolehelper until it starts using polkit
-./mkinstalldirs %{buildroot}%{_sysconfdir}/pam.d
+mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 /bin/cat <<EOF >%{buildroot}%{_sysconfdir}/pam.d/mate-system-log
 #%%PAM-1.0
 auth		include		system-auth
@@ -78,7 +75,7 @@ account		include		system-auth
 session		include		system-auth
 EOF
 
-./mkinstalldirs %{buildroot}%{_sysconfdir}/security/console.apps
+mkdir -p %{buildroot}%{_sysconfdir}/security/console.apps
 /bin/cat <<EOF >%{buildroot}%{_sysconfdir}/security/console.apps/mate-system-log
 USER=root
 PROGRAM=/usr/sbin/mate-system-log
@@ -86,19 +83,17 @@ SESSION=true
 FALLBACK=true
 EOF
 
-./mkinstalldirs %{buildroot}%{_sbindir}
+mkdir -p %{buildroot}%{_sbindir}
 /bin/mv %{buildroot}%{_bindir}/mate-system-log %{buildroot}%{_sbindir}
 /bin/ln -s /usr/bin/consolehelper %{buildroot}%{_bindir}/mate-system-log
 
-%{find_lang} %{name}-2.0 --with-gnome --all-name
+# remove unneeded converter
+rm -fr %{buildroot}%{_datadir}/MateConf
+
+%find_lang %{name}-2.0 --with-gnome --all-name
 
 %files -f %{name}-2.0.lang
 %doc AUTHORS COPYING ChangeLog NEWS README
-%{_sysconfdir}/mateconf/schemas/baobab.schemas
-%{_sysconfdir}/mateconf/schemas/mate-dictionary.schemas
-%{_sysconfdir}/mateconf/schemas/mate-screenshot.schemas
-%{_sysconfdir}/mateconf/schemas/mate-search-tool.schemas
-%{_sysconfdir}/mateconf/schemas/mate-system-log.schemas
 %{_sysconfdir}/security/console.apps/mate-system-log
 %{_sysconfdir}/pam.d/mate-system-log
 %{_bindir}/mate-dictionary
@@ -109,32 +104,31 @@ EOF
 %{_bindir}/mate-system-log
 %{_sbindir}/mate-system-log
 %{_libexecdir}/mate-dictionary-applet
-%{_libexecdir}/matecomponent/servers/MATE_DictionaryApplet.server
 %{_datadir}/applications/*
-%{_datadir}/mate-2.0/ui/MATE_DictionaryApplet.xml
+%{_datadir}/dbus-1/services/org.mate.panel.applet.DictionaryAppletFactory.service
+%{_datadir}/glib-2.0/schemas/org.mate.dictionary.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.mate.disk-usage-analyzer.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.mate.screenshot.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.mate.search-tool.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
 %{_datadir}/mate-dict/sources/default.desktop
 %{_datadir}/mate-dict/sources/spanish.desktop
 %{_datadir}/mate-dict/sources/thai.desktop
 %{_datadir}/mate-disk-usage-analyzer/*
 %{_datadir}/mate-dictionary/
+%{_datadir}/mate-panel/applets/org.mate.DictionaryApplet.mate-panel-applet
 %{_datadir}/mate-screenshot
 %{_datadir}/mate-utils
 %{_datadir}/pixmaps/*
-%{_iconsdir}/mate/*/apps/*
+%{_iconsdir}/hicolor
 %{_mandir}/man1/*
 
 %files -n %{libname}
 %{_libdir}/libmatedict.so.%{major}*
 
 %files -n %{devname}
+%doc %{_datadir}/gtk-doc
 %{_libdir}/libmatedict*.so
 %{_libdir}/pkgconfig/mate-dict*.pc
 %{_includedir}/mate-dict*
-
-
-
-%changelog
-* Tue Jun 05 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.0-1
-+ Revision: 802520
-- imported package mate-utils
 
