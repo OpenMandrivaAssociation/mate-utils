@@ -6,7 +6,7 @@
 
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
-Version:	1.8.0
+Version:	1.8.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -55,8 +55,7 @@ This is the shared library required by the MATE Dictionary.
 NOCONFIGURE=yes ./autogen.sh
 
 %build
-%configure2_5x \
-	--disable-static \
+%configure \
 	--enable-gdict-applet
 
 %make
