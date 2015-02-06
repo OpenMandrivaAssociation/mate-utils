@@ -7,7 +7,7 @@
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
 Version:	1.8.1
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
