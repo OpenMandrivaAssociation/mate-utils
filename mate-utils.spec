@@ -6,8 +6,8 @@
 
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
-Version:	1.8.1
-Release:	3
+Version:	1.14.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
@@ -17,9 +17,9 @@ BuildRequires:	intltool
 BuildRequires:	mate-common
 BuildRequires:	yelp-tools
 BuildRequires:	pkgconfig(glib-2.0)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(ice)
-BuildRequires:	pkgconfig(libcanberra-gtk)
+BuildRequires:	pkgconfig(libcanberra-gtk3)
 BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:	pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:	pkgconfig(sm)
@@ -56,7 +56,7 @@ NOCONFIGURE=yes ./autogen.sh
 
 %build
 %configure \
-	--enable-gdict-applet
+	--enable-gdict-applet --with-gtk=3.0
 
 %make
 
@@ -111,7 +111,6 @@ rm -fr %{buildroot}%{_datadir}/MateConf
 %{_datadir}/glib-2.0/schemas/org.mate.search-tool.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
 %{_datadir}/mate-dict/sources/default.desktop
-%{_datadir}/mate-dict/sources/spanish.desktop
 %{_datadir}/mate-dict/sources/thai.desktop
 %{_datadir}/mate-disk-usage-analyzer/*
 %{_datadir}/mate-dictionary/
@@ -119,6 +118,10 @@ rm -fr %{buildroot}%{_datadir}/MateConf
 %{_datadir}/mate-screenshot
 %{_datadir}/mate-utils
 %{_datadir}/pixmaps/*
+%{_datadir}/appdata/mate-dictionary.appdata.xml
+%{_datadir}/appdata/mate-disk-usage-analyzer.appdata.xml
+%{_datadir}/appdata/mate-screenshot.appdata.xml
+%{_datadir}/appdata/mate-search-tool.appdata.xml
 %{_iconsdir}/hicolor
 %{_mandir}/man1/*
 
