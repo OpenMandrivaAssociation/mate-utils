@@ -6,12 +6,12 @@
 
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
-Version:	1.14.0
+Version:	1.18.2
 Release:	1
-License:	GPLv2+
+License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
-Url:		http://mate-desktop.org
-Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://mate-desktop.org
+Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	mate-common
@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
+
 
 %description
 MATE is the GNU Network Object Model Environment. This powerful
@@ -52,12 +53,12 @@ This is the shared library required by the MATE Dictionary.
 
 %prep
 %setup -q
-NOCONFIGURE=yes ./autogen.sh
 
 %build
+#NOCONFIGURE=yes ./autogen.sh
 %configure \
-	--enable-gdict-applet --with-gtk=3.0
-
+	--enable-gdict-applet \
+	%{nil}
 %make
 
 %install
@@ -86,12 +87,10 @@ mkdir -p %{buildroot}%{_sbindir}
 /bin/mv %{buildroot}%{_bindir}/mate-system-log %{buildroot}%{_sbindir}
 /bin/ln -s /usr/bin/consolehelper %{buildroot}%{_bindir}/mate-system-log
 
-# remove unneeded converter
-rm -fr %{buildroot}%{_datadir}/MateConf
+# locales
+%find_lang %{name} --with-gnome --all-name
 
-%find_lang %{name}-2.0 --with-gnome --all-name
-
-%files -f %{name}-2.0.lang
+%files -f %{name}.lang
 %doc AUTHORS COPYING ChangeLog NEWS README
 %{_sysconfdir}/security/console.apps/mate-system-log
 %{_sysconfdir}/pam.d/mate-system-log
@@ -110,13 +109,18 @@ rm -fr %{buildroot}%{_datadir}/MateConf
 %{_datadir}/glib-2.0/schemas/org.mate.screenshot.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.search-tool.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
+%dir %{_datadir}/mate-dict/
 %{_datadir}/mate-dict/sources/default.desktop
 %{_datadir}/mate-dict/sources/thai.desktop
+%dir %{_datadir}/mate-disk-usage-analyzer/
 %{_datadir}/mate-disk-usage-analyzer/*
-%{_datadir}/mate-dictionary/
+%dir %{_datadir}/mate-dictionary/
+%{_datadir}/mate-dictionary/*
 %{_datadir}/mate-panel/applets/org.mate.DictionaryApplet.mate-panel-applet
-%{_datadir}/mate-screenshot
-%{_datadir}/mate-utils
+%dir %{_datadir}/mate-screenshot/
+%{_datadir}/mate-screenshot/*
+%dir %{_datadir}/mate-utils/
+%{_datadir}/mate-utils/*
 %{_datadir}/pixmaps/*
 %{_datadir}/appdata/mate-dictionary.appdata.xml
 %{_datadir}/appdata/mate-disk-usage-analyzer.appdata.xml
