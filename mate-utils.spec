@@ -110,6 +110,7 @@ mkdir -p %{buildroot}%{_sbindir}
 %{_datadir}/glib-2.0/schemas/org.mate.search-tool.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
 %dir %{_datadir}/mate-dict/
+%dir %{_datadir}/mate-dict/sources/
 %{_datadir}/mate-dict/sources/default.desktop
 %{_datadir}/mate-dict/sources/thai.desktop
 %dir %{_datadir}/mate-disk-usage-analyzer/
