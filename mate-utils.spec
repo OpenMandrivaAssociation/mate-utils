@@ -88,7 +88,7 @@ A dictionary application for MATE Desktop.
 
 This package is part of Mate Desktop Utils.
 
-%files -n mate-dictionary -f mate-dictionary.lang
+%files -n mate-dictionary
 %doc mate-dictionary/AUTHORS
 %doc mate-dictionary/README
 %{_bindir}/mate-dictionary
@@ -122,7 +122,7 @@ folder as far as any mounted/unmounted device.
 
 This package is part of Mate Desktop Utils.
 
-%files -n mate-disk-usage-analyzer -f mate-disk-usage-analyzer.lang
+%files -n mate-disk-usage-analyzer
 %doc baobab/AUTHORS baobab/README
 %{_bindir}/mate-disk-usage-analyzer
 %{_datadir}/appdata/mate-disk-usage-analyzer.appdata.xml
@@ -166,7 +166,7 @@ An application to search for files on your computer.
 
 This package is part of Mate Desktop Utils.
 
-%files -n mate-search-tool -f mate-search-tool.lang
+%files -n mate-search-tool
 %{_bindir}/mate-search-tool
 %{_datadir}/appdata/mate-search-tool.appdata.xml
 %{_datadir}/applications/mate-search-tool.desktop
@@ -187,7 +187,7 @@ An application that lets you view various system log files.
 
 This package is part of Mate Desktop Utils.
 
-%files -n mate-system-log -f mate-system-log.lang
+%files -n mate-system-log
 %{_sysconfdir}/security/console.apps/mate-system-log
 %{_sysconfdir}/pam.d/mate-system-log
 %{_bindir}/mate-system-log
@@ -227,7 +227,7 @@ This package contains libraries and includes files for developing programs
 based on the MATE Dictionary.
 
 %files -n %{devname}
-%doc %{_datadir}/gtk-doc
+%doc %{_datadir}/gtk-doc/html/mate-dict/
 %{_libdir}/libmatedict*.so
 %{_libdir}/pkgconfig/mate-dict*.pc
 %{_includedir}/mate-dict*
@@ -273,10 +273,6 @@ ln -s /usr/bin/consolehelper %{buildroot}%{_bindir}/mate-system-log
 
 # locales
 %find_lang %{name}-common --with-gnome --all-name
-%find_lang mate-disk-usage-analyzer --with-gnome --all-name
-%find_lang mate-dictionary --with-gnome --all-name
-%find_lang mate-search-tool --with-gnome --all-name
-%find_lang mate-system-log --with-gnome --all-name
 
 %check
 desktop-file-validate %{buildroot}/%{_datadir}/applications/mate-dictionary.desktop
