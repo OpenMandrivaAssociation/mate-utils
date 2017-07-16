@@ -160,7 +160,8 @@ This package is part of Mate Desktop Utils.
 %package -n mate-search-tool
 Summary:	A file searching tool for MATE Desktop
 Requires:	%{name}-common = %{version}-%{release}
-Requires: mate-desktop-libs
+Requires:	mate-desktop-libs
+
 %description -n mate-search-tool
 An application to search for files on your computer.
 
