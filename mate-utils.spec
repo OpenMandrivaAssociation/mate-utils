@@ -129,7 +129,7 @@ This package is part of Mate Desktop Utils.
 %dir %{_datadir}/mate-disk-usage-analyzer/
 %{_datadir}/mate-disk-usage-analyzer/*
 %{_datadir}/glib-2.0/schemas/org.mate.disk-usage-analyzer.gschema.xml
-%{_datadir}/icons/hicolor/*/apps/mate-disk-usage-analyzer.*
+%{_datadir}/icons/hicolor/*/apps/mate-disk-usage-analyzer.png
 %{_mandir}/man1/mate-disk-usage-analyzer.1.*
 
 #---------------------------------------------------------------------------
@@ -196,7 +196,7 @@ This package is part of Mate Desktop Utils.
 %{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
 %{_datadir}/applications/mate-system-log.desktop
 %{_mandir}/man1/mate-system-log.1.*
-%{_datadir}/icons/hicolor/*/apps/*.png
+%{_datadir}/icons/hicolor/*/apps/mate-system-log.png
 %{_datadir}/icons/hicolor/scalable/apps/mate-system-log-symbolic.svg
 
 #---------------------------------------------------------------------------
