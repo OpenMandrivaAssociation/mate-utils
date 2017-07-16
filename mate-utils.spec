@@ -2,7 +2,7 @@
 
 %define major 6
 %define libname %mklibname matedict %{major}
-%define devname %mklibname -d matedict
+%define devname %mklibname matedict -d
 
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
@@ -93,7 +93,6 @@ This package is part of Mate Desktop Utils.
 %doc mate-dictionary/README
 %{_bindir}/mate-dictionary
 %{_libexecdir}/mate-dictionary-applet
-%{_libdir}/libmatedict.so.*
 %{_datadir}/appdata/mate-dictionary.appdata.xml
 %{_datadir}/applications/mate-dictionary.desktop
 %dir %{_datadir}/mate-dict/
