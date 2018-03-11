@@ -7,7 +7,7 @@
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
 Version:	1.18.3
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://mate-desktop.org
@@ -58,7 +58,7 @@ your day for the MATE Desktop:
   * mate-dictionary
   * mate-screenshot
   * mate-disk-usage-analyzer
-        
+
 %files
 
 #---------------------------------------------------------------------------
@@ -280,4 +280,3 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/mate-disk-usage-anal
 desktop-file-validate %{buildroot}/%{_datadir}/applications/mate-screenshot.desktop
 desktop-file-validate %{buildroot}/%{_datadir}/applications/mate-search-tool.desktop
 desktop-file-validate %{buildroot}/%{_datadir}/applications/mate-system-log.desktop
-
