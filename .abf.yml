@@ -1,5 +1,6 @@
 removed_sources:
   mate-utils-1.14.0.tar.xz: 4a6f4803432204b74d6d48e4a4325b7b9e1ea4d5
   mate-utils-1.18.2.tar.xz: 73111d0cc6aa7dc80f96cacfcbc73ecbea303a7a
-sources:
   mate-utils-1.18.3.tar.xz: 6daffa3a7883cd76097fabc23bccbcf965fc4da2
+sources:
+  mate-utils-1.20.0.tar.xz: aa33647250ff6eff22ccb2e885fcd455e936d57a
