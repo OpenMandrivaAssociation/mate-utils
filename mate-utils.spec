@@ -6,7 +6,7 @@
 
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
-Version:	1.20.0
+Version:	1.20.2
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
@@ -236,16 +236,17 @@ based on the MATE Dictionary.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 #NOCONFIGURE=yes ./autogen.sh
 %configure \
 	--enable-gdict-applet \
 	%{nil}
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 #rm -rf %{buildroot}/var
 #rm -fv %{buildroot}%{_bindir}/test-reader
