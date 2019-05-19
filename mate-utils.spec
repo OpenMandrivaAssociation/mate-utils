@@ -15,6 +15,7 @@ Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	gtk-doc
+BuildRequires:	inkscape
 BuildRequires:	intltool
 BuildRequires:	itstool
 BuildRequires:	librsvg
