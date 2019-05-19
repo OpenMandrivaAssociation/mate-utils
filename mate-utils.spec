@@ -95,7 +95,7 @@ This package is part of Mate Desktop Utils.
 %doc mate-dictionary/README
 %{_bindir}/mate-dictionary
 %{_libexecdir}/mate-dictionary-applet
-%{_datadir}/appdata/mate-dictionary.appdata.xml
+%{_datadir}/metainfo/mate-dictionary.appdata.xml
 %{_datadir}/applications/mate-dictionary.desktop
 %dir %{_datadir}/mate-dict/
 %dir %{_datadir}/mate-dict/sources/
@@ -126,7 +126,7 @@ This package is part of Mate Desktop Utils.
 %files -n mate-disk-usage-analyzer
 %doc baobab/AUTHORS baobab/README
 %{_bindir}/mate-disk-usage-analyzer
-%{_datadir}/appdata/mate-disk-usage-analyzer.appdata.xml
+%{_datadir}/metainfo/mate-disk-usage-analyzer.appdata.xml
 %{_datadir}/applications/mate-disk-usage-analyzer.desktop
 %dir %{_datadir}/mate-disk-usage-analyzer/
 %{_datadir}/mate-disk-usage-analyzer/*
@@ -149,7 +149,7 @@ This package is part of Mate Desktop Utils.
 %files -n mate-screenshot
 %{_bindir}/mate-screenshot
 %{_bindir}/mate-panel-screenshot
-%{_datadir}/appdata/mate-screenshot.appdata.xml
+%{_datadir}/metainfo/mate-screenshot.appdata.xml
 %{_datadir}/applications/mate-screenshot.desktop
 %dir %{_datadir}/mate-screenshot/
 %{_datadir}/mate-screenshot/*
@@ -170,7 +170,7 @@ This package is part of Mate Desktop Utils.
 
 %files -n mate-search-tool
 %{_bindir}/mate-search-tool
-%{_datadir}/appdata/mate-search-tool.appdata.xml
+%{_datadir}/metainfo/mate-search-tool.appdata.xml
 %{_datadir}/applications/mate-search-tool.desktop
 %{_mandir}/man1/mate-search-tool.1.*
 %{_datadir}/glib-2.0/schemas/org.mate.search-tool.gschema.xml
