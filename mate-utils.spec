@@ -17,6 +17,7 @@ BuildRequires:	desktop-file-utils
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	itstool
+BuildRequires:	librsvg
 BuildRequires:	mate-common
 BuildRequires:	pkgconfig(dri)
 BuildRequires:	pkgconfig(gio-2.0)
