@@ -35,6 +35,7 @@ BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xext)
 BuildRequires:	pkgconfig(xmu)
+BuildRequires:  pkgconfig(udisks2-qt5)
 BuildRequires:  usermode
 BuildRequires:	yelp-tools
 
