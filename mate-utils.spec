@@ -130,8 +130,6 @@ This package is part of Mate Desktop Utils.
 %{_bindir}/mate-disk-usage-analyzer
 %{_datadir}/metainfo/mate-disk-usage-analyzer.appdata.xml
 %{_datadir}/applications/mate-disk-usage-analyzer.desktop
-%dir %{_datadir}/mate-disk-usage-analyzer/
-%{_datadir}/mate-disk-usage-analyzer/*
 %{_datadir}/glib-2.0/schemas/org.mate.disk-usage-analyzer.gschema.xml
 %{_iconsdir}/hicolor/*/apps/mate-disk-usage-analyzer.png
 %{_iconsdir}/hicolor/scalable/apps/mate-disk-usage-analyzer.svg
@@ -153,8 +151,6 @@ This package is part of Mate Desktop Utils.
 %{_bindir}/mate-panel-screenshot
 %{_datadir}/metainfo/mate-screenshot.appdata.xml
 %{_datadir}/applications/mate-screenshot.desktop
-%dir %{_datadir}/mate-screenshot/
-%{_datadir}/mate-screenshot/*
 %{_mandir}/man1/mate-screenshot.1.*
 %{_mandir}/man1/mate-panel-screenshot.1.*
 %{_datadir}/glib-2.0/schemas/org.mate.screenshot.gschema.xml
@@ -196,8 +192,6 @@ This package is part of Mate Desktop Utils.
 %{_sysconfdir}/pam.d/mate-system-log
 %{_bindir}/mate-system-log
 %{_sbindir}/mate-system-log
-%dir %{_datadir}/mate-utils/
-%{_datadir}/mate-utils/*
 %{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
 %{_datadir}/applications/mate-system-log.desktop
 %{_mandir}/man1/mate-system-log.1.*
@@ -216,6 +210,18 @@ This package contains the shared libraries used by the MATE Dictionary.
 %files -n %{libname}
 %{_libdir}/libmatedict.so.%{major}*
 
+#---------------------------------------------------------------------------
+
+%package -n mate-disk-image-mounter
+Summary: A disk image mounter for MATE Desktop
+Requires: %{name}-common = %{version}-%{release}
+
+%description -n mate-disk-image-mounter
+An application to mount images.
+
+%files -n mate-disk-image-mounter
+%{_bindir}/mate-disk-image-mounter
+%{_datadir}/applications/mate-disk-image-mounter.desktop
 #---------------------------------------------------------------------------
 
 %package -n %{devname}
