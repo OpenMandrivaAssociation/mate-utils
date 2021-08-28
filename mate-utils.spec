@@ -94,7 +94,7 @@ This package is part of Mate Desktop Utils.
 
 %files -n mate-dictionary
 %doc mate-dictionary/AUTHORS
-%doc mate-dictionary/README
+%doc mate-dictionary/README.md
 %{_bindir}/mate-dictionary
 %{_libexecdir}/mate-dictionary-applet
 %{_datadir}/metainfo/mate-dictionary.appdata.xml
