@@ -78,7 +78,7 @@ This package provides common files for Mate Desktop Utils.
 This package is part of Mate Desktop Utils.
 
 %files common -f %{name}-common.lang
-%doc AUTHORS COPYING COPYING.libs ChangeLog NEWS README
+%doc AUTHORS COPYING COPYING.libs ChangeLog NEWS README*
 
 #---------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@ This package is part of Mate Desktop Utils.
 
 %files -n mate-dictionary
 %doc mate-dictionary/AUTHORS
-%doc mate-dictionary/README.md
+%doc mate-dictionary/README*
 %{_bindir}/mate-dictionary
 %{_libexecdir}/mate-dictionary-applet
 %{_datadir}/metainfo/mate-dictionary.appdata.xml
@@ -126,7 +126,7 @@ folder as far as any mounted/unmounted device.
 This package is part of Mate Desktop Utils.
 
 %files -n mate-disk-usage-analyzer
-%doc baobab/AUTHORS baobab/README
+%doc baobab/AUTHORS baobab/README*
 %{_bindir}/mate-disk-usage-analyzer
 %{_datadir}/metainfo/mate-disk-usage-analyzer.appdata.xml
 %{_datadir}/applications/mate-disk-usage-analyzer.desktop
