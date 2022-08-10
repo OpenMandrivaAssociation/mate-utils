@@ -7,7 +7,7 @@
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
 Version:	1.26.0
-Release:	1
+Release:	2
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://mate-desktop.org
@@ -108,7 +108,7 @@ This package is part of Mate Desktop Utils.
 %{_datadir}/mate-panel/applets/org.mate.DictionaryApplet.mate-panel-applet
 %{_datadir}/dbus-1/services/org.mate.panel.applet.DictionaryAppletFactory.service
 %{_datadir}/glib-2.0/schemas/org.mate.dictionary.gschema.xml
-%{_mandir}/man1/mate-dictionary.1.*
+%doc %{_mandir}/man1/mate-dictionary.1.*
 
 #---------------------------------------------------------------------------
 
@@ -133,7 +133,7 @@ This package is part of Mate Desktop Utils.
 %{_datadir}/glib-2.0/schemas/org.mate.disk-usage-analyzer.gschema.xml
 %{_iconsdir}/hicolor/*/apps/mate-disk-usage-analyzer.png
 %{_iconsdir}/hicolor/scalable/apps/mate-disk-usage-analyzer.svg
-%{_mandir}/man1/mate-disk-usage-analyzer.1.*
+%doc %{_mandir}/man1/mate-disk-usage-analyzer.1.*
 
 #---------------------------------------------------------------------------
 
@@ -151,8 +151,8 @@ This package is part of Mate Desktop Utils.
 %{_bindir}/mate-panel-screenshot
 %{_datadir}/metainfo/mate-screenshot.appdata.xml
 %{_datadir}/applications/mate-screenshot.desktop
-%{_mandir}/man1/mate-screenshot.1.*
-%{_mandir}/man1/mate-panel-screenshot.1.*
+%doc %{_mandir}/man1/mate-screenshot.1.*
+%doc %{_mandir}/man1/mate-panel-screenshot.1.*
 %{_datadir}/glib-2.0/schemas/org.mate.screenshot.gschema.xml
 
 #---------------------------------------------------------------------------
@@ -170,7 +170,7 @@ This package is part of Mate Desktop Utils.
 %{_bindir}/mate-search-tool
 %{_datadir}/metainfo/mate-search-tool.appdata.xml
 %{_datadir}/applications/mate-search-tool.desktop
-%{_mandir}/man1/mate-search-tool.1.*
+%doc %{_mandir}/man1/mate-search-tool.1.*
 %{_datadir}/glib-2.0/schemas/org.mate.search-tool.gschema.xml
 %{_datadir}/pixmaps/mate-search-tool/
 
@@ -191,10 +191,9 @@ This package is part of Mate Desktop Utils.
 %{_sysconfdir}/security/console.apps/mate-system-log
 %{_sysconfdir}/pam.d/mate-system-log
 %{_bindir}/mate-system-log
-%{_sbindir}/mate-system-log
 %{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
 %{_datadir}/applications/mate-system-log.desktop
-%{_mandir}/man1/mate-system-log.1.*
+%doc %{_mandir}/man1/mate-system-log.1.*
 %{_iconsdir}/hicolor/*/apps/mate-system-log.png
 %{_iconsdir}/hicolor/scalable/apps/mate-system-log-symbolic.svg
 
@@ -245,8 +244,7 @@ based on the MATE Dictionary.
 #---------------------------------------------------------------------------
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 #NOCONFIGURE=yes ./autogen.sh
@@ -258,8 +256,6 @@ based on the MATE Dictionary.
 %install
 %make_install
 
-#rm -rf %{buildroot}/var
-#rm -fv %{buildroot}%{_bindir}/test-reader
 
 # force mate-system-log to use polkit:
 install -dm 0755 %{buildroot}%{_sysconfdir}/pam.d
@@ -273,14 +269,10 @@ EOF
 mkdir -p %{buildroot}%{_sysconfdir}/security/console.apps
 cat <<EOF >%{buildroot}%{_sysconfdir}/security/console.apps/mate-system-log
 USER=root
-PROGRAM=/usr/sbin/mate-system-log
+PROGRAM=/usr/bin/mate-system-log
 SESSION=true
 FALLBACK=true
 EOF
-
-mkdir -p %{buildroot}%{_sbindir}
-mv %{buildroot}%{_bindir}/mate-system-log %{buildroot}%{_sbindir}
-ln -s /usr/bin/consolehelper %{buildroot}%{_bindir}/mate-system-log
 
 # locales
 %find_lang %{name}-common --with-gnome --all-name
