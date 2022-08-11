@@ -1,0 +1,33 @@
+From 2e6ed9adabe4d139706e6b637078451769ad4692 Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Sat, 1 Jan 2022 11:23:13 +0100
+Subject: [PATCH 5/6] mate-dictionary: fix memory leak
+
+---
+ mate-dictionary/libgdict/gdict-defbox.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/mate-dictionary/libgdict/gdict-defbox.c b/mate-dictionary/libgdict/gdict-defbox.c
+index 247bf8e9..8f6e0d23 100644
+--- a/mate-dictionary/libgdict/gdict-defbox.c
++++ b/mate-dictionary/libgdict/gdict-defbox.c
+@@ -200,6 +200,8 @@ gdict_defbox_dispose (GObject *gobject)
+       priv->regular_cursor = NULL;
+     }
+ 
++  g_clear_pointer (&priv->word, g_free);
++
+   G_OBJECT_CLASS (gdict_defbox_parent_class)->dispose (gobject);
+ }
+ 
+@@ -2548,6 +2550,7 @@ gdict_defbox_lookup (GdictDefbox *defbox,
+   				       G_CALLBACK (error_cb),
+   				       defbox);
+ 
++  g_free (priv->word);
+   priv->word = g_strdup (word);
+   g_object_notify (G_OBJECT (defbox), "word");
+ 
+-- 
+2.36.1
+

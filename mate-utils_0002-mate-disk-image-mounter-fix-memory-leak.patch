@@ -1,0 +1,27 @@
+From cb4703ed7214fd5366ee1837c63fd2bcdf21319c Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Thu, 21 Oct 2021 22:28:48 +0200
+Subject: [PATCH 2/6] mate-disk-image-mounter: fix memory leak
+
+---
+ mate-disk-image-mounter/src/main.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/mate-disk-image-mounter/src/main.c b/mate-disk-image-mounter/src/main.c
+index b4f4d221..fc65b2d5 100644
+--- a/mate-disk-image-mounter/src/main.c
++++ b/mate-disk-image-mounter/src/main.c
+@@ -191,8 +191,10 @@ main (int argc, char *argv[])
+       s = g_option_context_get_help (o, FALSE, NULL);
+       g_printerr ("%s", s);
+       g_free (s);
++      g_option_context_free (o);
+       goto out;
+     }
++  g_option_context_free (o);
+ 
+   if (argc > 1)
+     {
+-- 
+2.36.1
+

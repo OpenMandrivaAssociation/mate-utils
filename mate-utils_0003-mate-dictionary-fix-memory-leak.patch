@@ -1,0 +1,24 @@
+From 6e1f199608ad5622507816f00ac22a0a8990ed4c Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Thu, 21 Oct 2021 22:02:14 +0200
+Subject: [PATCH 3/6] mate-dictionary: fix memory leak
+
+---
+ mate-dictionary/src/gdict-app.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/mate-dictionary/src/gdict-app.c b/mate-dictionary/src/gdict-app.c
+index 03f9cd6a..3d82a037 100644
+--- a/mate-dictionary/src/gdict-app.c
++++ b/mate-dictionary/src/gdict-app.c
+@@ -359,6 +359,7 @@ gdict_init (int *argc, char ***argv)
+ 
+       exit (1);
+     }
++  g_option_context_free (context);
+ 
+   g_set_application_name (_("Dictionary"));
+   gtk_window_set_default_icon_name ("accessories-dictionary");
+-- 
+2.36.1
+
