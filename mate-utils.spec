@@ -6,19 +6,12 @@
 
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
-Version:	1.26.0
-Release:	4
+Version:	1.26.1
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		https://mate-desktop.org
 Source0:	https://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
-
-Patch0:		mate-utils_0001-mate-screenshot-fix-memory-leak.patch
-Patch1:		mate-utils_0002-mate-disk-image-mounter-fix-memory-leak.patch
-Patch2:		mate-utils_0003-mate-dictionary-fix-memory-leak.patch
-Patch3:		mate-utils_0004-gsearchtool-fix-memory-leak.patch
-Patch4:		mate-utils_0005-mate-dictionary-fix-memory-leak.patch
-Patch5:		mate-utils_0006-mate-dictionary-fix-memory-leak.patch
 
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
