@@ -1,8 +1,9 @@
 %define mate_ver	%(echo %{version}|cut -d. -f1,2)
 
 %define major 6
-%define libname %mklibname matedict %{major}
+%define libname %mklibname matedict
 %define devname %mklibname matedict -d
+%define oldlibname %mklibname matedict 6
 
 Summary:	MATE utility programs such as file search and calculator
 Name:		mate-utils
@@ -57,11 +58,11 @@ preserving a traditional desktop experience.
 This package provides a collection of small applications all there to make
 your day for the MATE Desktop:
 
-  * mate-system-log
-  * mate-search-tool
   * mate-dictionary
-  * mate-screenshot
   * mate-disk-usage-analyzer
+  * mate-search-tool
+  * mate-screenshot
+  * mate-system-log
 
 %files
 
@@ -202,6 +203,7 @@ This package is part of Mate Desktop Utils.
 %package -n %{libname}
 Summary:	MATE dictionary shared library
 Group:		System/Libraries
+Obsoletes:	%{oldlibname} < %{EVRD}
 
 %description -n %{libname}
 This package contains the shared libraries used by the MATE Dictionary.
