@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libcanberra-gtk3)
 BuildRequires:	pkgconfig(libgtop-2.0)
 BuildRequires:	pkgconfig(libmatepanelapplet-4.0)
+BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(popt)
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
@@ -285,3 +286,4 @@ desktop-file-validate %{buildroot}/%{_datadir}/applications/mate-disk-usage-anal
 desktop-file-validate %{buildroot}/%{_datadir}/applications/mate-screenshot.desktop
 desktop-file-validate %{buildroot}/%{_datadir}/applications/mate-search-tool.desktop
 desktop-file-validate %{buildroot}/%{_datadir}/applications/mate-system-log.desktop
+
